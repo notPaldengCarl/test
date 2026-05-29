@@ -25,11 +25,11 @@
 </a>
 
 <header id="masthead" class="site-header" role="banner">
-	<div class="site-container">
+	<div class="container">
 
 		<div class="site-branding">
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="logo-link">
-				<span class="logo-void">VØID</span><span class="logo-roasters">ROASTERS</span>
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+				<?php echo esc_html( get_bloginfo( 'name' ) ); ?>
 			</a>
 		</div><!-- .site-branding -->
 
@@ -46,7 +46,7 @@
 			?>
 		</nav><!-- .primary-navigation -->
 
-	</div><!-- .site-container -->
+	</div><!-- .container -->
 </header><!-- .site-header -->
 
 <main id="primary" class="site-main" role="main">
