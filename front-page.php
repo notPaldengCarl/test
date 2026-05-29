@@ -2,109 +2,114 @@
 /**
  * The front page template.
  *
- * Displays a brutalist hero section, curated roasts grid,
- * a CTA banner, and navigation to other pages.
+ * A fully hardcoded, premium brutalist layout.
+ * No database dependency — guaranteed visual output.
  *
  * @package VØID_ROASTERS
- * @since   1.1.0
+ * @since   2.0.0
  */
 
 get_header();
 ?>
 
-<section class="hero" aria-label="<?php esc_attr_e( 'Welcome', 'void-roasters' ); ?>">
-	<div class="site-container grid-12">
-		<div class="hero__content col-span-8 col-start-1">
-			<h1 class="hero__title">
-				<?php echo esc_html( get_bloginfo( 'name' ) ); ?>
-			</h1>
-			<p class="hero__tagline">
-				<?php echo esc_html( get_bloginfo( 'description' ) ); ?>
-			</p>
-			<div class="hero__cta">
-				<?php
-				$about_page = get_page_by_title( 'About' );
-				$cta_url    = $about_page ? get_permalink( $about_page->ID ) : home_url( '/' );
-				?>
-				<a href="<?php echo esc_url( $cta_url ); ?>" class="btn btn--inverse">
-					<?php esc_html_e( 'Our Story', 'void-roasters' ); ?>
-				</a>
-			</div>
-		</div>
-	</div>
-</section>
+<div class="site-wrapper">
 
-<hr class="section-divider" aria-hidden="true">
+	<?php
+	/**
+	 * Hero Section — 2-column asymmetric grid.
+	 * Left: massive typographic headline + CTA.
+	 * Right: image placeholder for balance.
+	 */
+	?>
+	<section class="hero" aria-label="<?php esc_attr_e( 'Welcome', 'void-roasters' ); ?>">
+		<div class="hero-grid">
+			<div class="hero-text">
+				<h1 class="hero__title">
+					<?php echo esc_html( get_bloginfo( 'name' ) ); ?>
+				</h1>
+				<p class="hero__tagline">
+					<?php echo esc_html( get_bloginfo( 'description' ) ); ?>
+				</p>
+				<div class="hero__cta">
+					<?php
+					$about_page = get_page_by_title( 'About' );
+					$cta_url    = $about_page ? get_permalink( $about_page->ID ) : home_url( '/' );
+					?>
+					<a href="<?php echo esc_url( $cta_url ); ?>" class="btn btn--inverse">
+						<?php esc_html_e( 'Our Story', 'void-roasters' ); ?>
+					</a>
+				</div>
+			</div><!-- .hero-text -->
+			<div class="hero-image-placeholder" aria-hidden="true">
+				<span class="hero-image-placeholder__label">VØID</span>
+			</div><!-- .hero-image-placeholder -->
+		</div><!-- .hero-grid -->
+	</section><!-- .hero -->
 
-<section class="roasts-section" aria-label="<?php esc_attr_e( 'Curated Single-Origin Roasts', 'void-roasters' ); ?>">
-	<div class="site-container">
-		<h2 class="roasts-section__title">
-			<?php esc_html_e( 'Curated Origins', 'void-roasters' ); ?>
-		</h2>
+	<?php
+	/**
+	 * Curated Origins — Hardcoded product grid.
+	 * 3 product cards with image, name, price, and CTA.
+	 */
+	?>
+	<section class="curated-origins" aria-label="<?php esc_attr_e( 'Curated Origins', 'void-roasters' ); ?>">
+		<header class="section-header">
+			<h2 class="section-title"><?php esc_html_e( 'Curated Origins', 'void-roasters' ); ?></h2>
+		</header>
 
-		<?php
-		$void_roasts_query = new WP_Query(
-			array(
-				'post_type'      => 'post',
-				'posts_per_page' => 3,
-				'orderby'        => 'date',
-				'order'          => 'DESC',
-				'post_status'    => 'publish',
-			)
-		);
+		<div class="product-grid">
 
-		if ( $void_roasts_query->have_posts() ) :
-			?>
-			<div class="product-grid">
-				<?php
-				while ( $void_roasts_query->have_posts() ) :
-					$void_roasts_query->the_post();
-					get_template_part( 'template-parts/content', 'roast' );
-				endwhile;
-				?>
-			</div>
-			<?php
-			wp_reset_postdata();
-		else :
-			?>
-			<div class="product-grid">
-				<article class="product-card">
-					<div class="card-image" aria-hidden="true">
-						<span class="card-image__label">001</span>
+			<article class="product-card">
+				<div class="card-img" aria-hidden="true">
+					<span class="card-img__label">001</span>
+				</div>
+				<div class="card-body">
+					<h3 class="card-name"><?php esc_html_e( 'Eclipse Blend', 'void-roasters' ); ?></h3>
+					<p class="card-description"><?php esc_html_e( 'Bitter chocolate, charred oak, and molasses. Dark roast from Sumatra.', 'void-roasters' ); ?></p>
+					<div class="card-footer">
+						<span class="card-price">$18.00</span>
+						<button type="button" class="btn btn--primary btn--sm"><?php esc_html_e( 'Add to Cart', 'void-roasters' ); ?></button>
 					</div>
-					<div class="card-body">
-						<div class="card-meta">SINGLE ESTATE &sol;&sol; SUMATRA</div>
-						<h3 class="card-title">Eclipse Dark Roast</h3>
-						<p class="card-desc">Bitter chocolate, charred oak, and molasses. Roasted deep for those who take it black.</p>
-					</div>
-				</article>
-				<article class="product-card">
-					<div class="card-image" aria-hidden="true">
-						<span class="card-image__label">002</span>
-					</div>
-					<div class="card-body">
-						<div class="card-meta">FIRST HARVEST &sol;&sol; UJI, KYOTO</div>
-						<h3 class="card-title">Ceremonial Mizu Matcha</h3>
-						<p class="card-desc">Umami-rich body, vivid jade color, sweet grass and marine mineral. Stone-ground to order.</p>
-					</div>
-				</article>
-				<article class="product-card">
-					<div class="card-image" aria-hidden="true">
-						<span class="card-image__label">003</span>
-					</div>
-					<div class="card-body">
-						<div class="card-meta">NATURAL PROCESS &sol;&sol; YIRGACHEFFE</div>
-						<h3 class="card-title">Highland Pour-Over</h3>
-						<p class="card-desc">Citrus acidity, jasmine florals, and a honeyed finish. Brewed low and slow for clarity.</p>
-					</div>
-				</article>
-			</div>
-		<?php endif; ?>
-	</div>
-</section>
+				</div>
+			</article>
 
-<section class="cta-banner" aria-label="<?php esc_attr_e( 'Get in Touch', 'void-roasters' ); ?>">
-	<div class="site-container">
+			<article class="product-card">
+				<div class="card-img" aria-hidden="true">
+					<span class="card-img__label">002</span>
+				</div>
+				<div class="card-body">
+					<h3 class="card-name"><?php esc_html_e( 'Mizu Matcha', 'void-roasters' ); ?></h3>
+					<p class="card-description"><?php esc_html_e( 'Ceremonial grade from Uji, Kyoto. Umami-rich, vivid jade, sweet grass.', 'void-roasters' ); ?></p>
+					<div class="card-footer">
+						<span class="card-price">$24.00</span>
+						<button type="button" class="btn btn--primary btn--sm"><?php esc_html_e( 'Add to Cart', 'void-roasters' ); ?></button>
+					</div>
+				</div>
+			</article>
+
+			<article class="product-card">
+				<div class="card-img" aria-hidden="true">
+					<span class="card-img__label">003</span>
+				</div>
+				<div class="card-body">
+					<h3 class="card-name"><?php esc_html_e( 'Highland', 'void-roasters' ); ?></h3>
+					<p class="card-description"><?php esc_html_e( 'Citrus acidity, jasmine florals, honeyed finish. Natural process Ethiopian.', 'void-roasters' ); ?></p>
+					<div class="card-footer">
+						<span class="card-price">$21.00</span>
+						<button type="button" class="btn btn--primary btn--sm"><?php esc_html_e( 'Add to Cart', 'void-roasters' ); ?></button>
+					</div>
+				</div>
+			</article>
+
+		</div><!-- .product-grid -->
+	</section><!-- .curated-origins -->
+
+	<?php
+	/**
+	 * CTA Banner — Visit the roastery.
+	 */
+	?>
+	<section class="cta-banner" aria-label="<?php esc_attr_e( 'Get in Touch', 'void-roasters' ); ?>">
 		<h2 class="cta-banner__title">
 			<?php esc_html_e( 'Visit the Roastery', 'void-roasters' ); ?>
 		</h2>
@@ -118,8 +123,9 @@ get_header();
 		<a href="<?php echo esc_url( $cta_contact ); ?>" class="btn btn--inverse">
 			<?php esc_html_e( 'Book a Visit', 'void-roasters' ); ?>
 		</a>
-	</div>
-</section>
+	</section><!-- .cta-banner -->
+
+</div><!-- .site-wrapper -->
 
 <?php
 get_footer();
