@@ -2,62 +2,54 @@
 /**
  * Template Name: Contact Page
  *
- * A brutalist contact page with a 2-column layout:
- * contact info on the left, functional form on the right.
+ * Swiss-minimalist contact page with border-list info and clean form.
  *
  * @package VØID_ROASTERS
- * @since   1.5.0
+ * @since   3.0.0
  */
 
 get_header();
 ?>
 
-<div class="site-container">
+<!-- Contact Hero -->
+<section class="hero" aria-label="<?php esc_attr_e( 'Contact', 'void-roasters' ); ?>">
+	<div class="container">
+		<span class="section-label"><?php esc_html_e( '01 REACH OUT', 'void-roasters' ); ?></span>
+		<h1><?php esc_html_e( 'Contact', 'void-roasters' ); ?></h1>
+	</div>
+</section>
 
-	<?php
-	while ( have_posts() ) :
-		the_post();
-		?>
+<hr class="section-divider">
 
-		<header class="page-header">
-			<h1 class="page-title">
-				<?php echo esc_html( get_the_title() ); ?>
-			</h1>
-		</header>
-
+<!-- Contact Layout -->
+<section aria-label="<?php esc_attr_e( 'Contact Form', 'void-roasters' ); ?>">
+	<div class="container">
 		<div class="contact-layout">
 
-			<div class="contact-info">
+			<!-- Left: Contact Info -->
+			<div>
+				<ul class="border-list">
+					<li>
+						<span class="border-list__title"><?php esc_html_e( 'Email', 'void-roasters' ); ?></span>
+						<span class="border-list__desc"><a href="mailto:hello@voidroasters.com">hello@voidroasters.com</a></span>
+					</li>
+					<li>
+						<span class="border-list__title"><?php esc_html_e( 'Location', 'void-roasters' ); ?></span>
+						<span class="border-list__desc"><?php esc_html_e( 'By Appointment Only', 'void-roasters' ); ?></span>
+					</li>
+					<li>
+						<span class="border-list__title"><?php esc_html_e( 'Wholesale', 'void-roasters' ); ?></span>
+						<span class="border-list__desc"><a href="mailto:wholesale@voidroasters.com">wholesale@voidroasters.com</a></span>
+					</li>
+					<li>
+						<span class="border-list__title"><?php esc_html_e( 'Social', 'void-roasters' ); ?></span>
+						<span class="border-list__desc">@voidroasters</span>
+					</li>
+				</ul>
+			</div>
 
-				<div class="contact-info__item">
-					<div class="contact-info__label"><?php esc_html_e( 'Email', 'void-roasters' ); ?></div>
-					<div class="contact-info__value">
-						<a href="mailto:hello@voidroasters.com">hello@voidroasters.com</a>
-					</div>
-				</div>
-
-				<div class="contact-info__item">
-					<div class="contact-info__label"><?php esc_html_e( 'Wholesale', 'void-roasters' ); ?></div>
-					<div class="contact-info__value">
-						<a href="mailto:wholesale@voidroasters.com">wholesale@voidroasters.com</a>
-					</div>
-				</div>
-
-				<div class="contact-info__item">
-					<div class="contact-info__label"><?php esc_html_e( 'Location', 'void-roasters' ); ?></div>
-					<div class="contact-info__value">
-						<?php esc_html_e( 'By Appointment Only', 'void-roasters' ); ?>
-					</div>
-				</div>
-
-				<div class="contact-info__item">
-					<div class="contact-info__label"><?php esc_html_e( 'Social', 'void-roasters' ); ?></div>
-					<div class="contact-info__value">@voidroasters</div>
-				</div>
-
-			</div><!-- .contact-info -->
-
-			<div class="contact-form-wrap">
+			<!-- Right: Form -->
+			<div>
 				<form class="contact-form" action="#" method="post">
 					<div class="form-group">
 						<label class="form-label" for="contact-name"><?php esc_html_e( 'Name', 'void-roasters' ); ?></label>
@@ -75,17 +67,12 @@ get_header();
 						<label class="form-label" for="contact-message"><?php esc_html_e( 'Message', 'void-roasters' ); ?></label>
 						<textarea class="form-textarea" id="contact-message" name="message" rows="5" placeholder="<?php esc_attr_e( 'Tell us what you need...', 'void-roasters' ); ?>" required></textarea>
 					</div>
-					<button type="submit" class="form-submit">
-						<?php esc_html_e( 'Send Message', 'void-roasters' ); ?>
-					</button>
+					<button type="submit" class="form-submit"><?php esc_html_e( 'Send Message', 'void-roasters' ); ?></button>
 				</form>
-			</div><!-- .contact-form-wrap -->
+			</div>
 
 		</div><!-- .contact-layout -->
+	</div>
+</section>
 
-	<?php endwhile; ?>
-
-</div><!-- .site-container -->
-
-<?php
-get_footer();
+<?php get_footer(); ?>
