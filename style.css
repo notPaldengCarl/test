@@ -1323,13 +1323,14 @@ body.cart-open {
 .cta-banner__title {
 	font-size: var(--font-size-h1);
 	font-weight: var(--font-weight-bold);
+	color: var(--color-text-inverse);
 	margin-bottom: var(--space-md);
 	max-width: 12ch;
 }
 
 .cta-banner__text {
 	font-size: var(--font-size-md);
-	color: rgba(255,255,255,0.6);
+	color: var(--color-text-inverse);
 	margin-bottom: var(--space-xl);
 	max-width: 40ch;
 }
