@@ -4,7 +4,7 @@ Theme URI: https://voidroasters.com
 Author: VØID ROASTERS Team
 Author URI: https://voidroasters.com
 Description: A bespoke WordPress theme for VØID ROASTERS, built with Swiss International Typographic Style, strict grid alignment, and a custom CSS property engine. Zero frameworks, zero bloat.
-Version: 1.0.0
+Version: 1.1.0
 Requires at least: 6.0
 Tested up to: 6.5
 Requires PHP: 8.0
@@ -15,39 +15,59 @@ Tags: custom-logo, custom-menu, editor-style, featured-images, threaded-comments
 */
 
 /* ==========================================================================
-   1. Custom Property Engine — Bespoke Design Tokens
+   1. Custom Property Engine — Brutalist Design Tokens
    ========================================================================== */
 
 :root {
-	/* --- Color Palette --- */
-	--void-color-primary: #0a0a0a;
+	/* --- Color Palette: Pitch Black / Off-White / Acid Green --- */
+	--void-color-primary: #0b0b0b;
 	--void-color-secondary: #1a1a1a;
-	--void-color-accent: #e63946;
-	--void-color-accent-hover: #c1121f;
-	--void-color-surface: #ffffff;
-	--void-color-surface-alt: #f8f9fa;
-	--void-color-border: #dee2e6;
-	--void-color-text: #212529;
-	--void-color-text-muted: #6c757d;
-	--void-color-text-inverse: #f8f9fa;
+	--void-color-tertiary: #2a2a2a;
+	--void-color-accent: #d4ff00;
+	--void-color-accent-hover: #b8e600;
+	--void-color-accent-muted: rgba(212, 255, 0, 0.15);
+	--void-color-surface: #f9f9f9;
+	--void-color-surface-alt: #f0f0f0;
+	--void-color-border: #d0d0d0;
+	--void-color-border-strong: #0b0b0b;
+	--void-color-text: #0b0b0b;
+	--void-color-text-muted: #5a5a5a;
+	--void-color-text-inverse: #f9f9f9;
 
-	/* --- Typography --- */
+	/* --- Typography: Massive Editorial Scale --- */
 	--void-font-family-primary: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	--void-font-family-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+
+	/* Body / UI scale */
 	--void-font-size-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.8rem);
 	--void-font-size-sm: clamp(0.8rem, 0.75rem + 0.25vw, 0.9rem);
 	--void-font-size-base: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
 	--void-font-size-md: clamp(1.1rem, 1rem + 0.5vw, 1.25rem);
-	--void-font-size-lg: clamp(1.35rem, 1.15rem + 1vw, 1.75rem);
-	--void-font-size-xl: clamp(1.75rem, 1.4rem + 1.75vw, 2.5rem);
-	--void-font-size-xxl: clamp(2.25rem, 1.6rem + 3.25vw, 3.75rem);
+
+	/* Editorial heading scale — massive, asymmetric, brutalist */
+	--void-font-size-h6: clamp(0.85rem, 0.75rem + 0.5vw, 1rem);
+	--void-font-size-h5: clamp(1rem, 0.85rem + 0.75vw, 1.25rem);
+	--void-font-size-h4: clamp(1.25rem, 1rem + 1.25vw, 1.75rem);
+	--void-font-size-h3: clamp(1.75rem, 1.2rem + 2.75vw, 3rem);
+	--void-font-size-h2: clamp(2.5rem, 1.5rem + 5vw, 5.5rem);
+	--void-font-size-h1: clamp(3.5rem, 2rem + 7.5vw, 9rem);
+	--void-font-size-hero: clamp(4rem, 2.5rem + 9vw, 12rem);
+
+	/* Deprecated aliases — kept for backward compat */
+	--void-font-size-xl: var(--void-font-size-h2);
+	--void-font-size-xxl: var(--void-font-size-h1);
+
 	--void-font-weight-regular: 400;
 	--void-font-weight-medium: 500;
 	--void-font-weight-bold: 700;
-	--void-line-height-tight: 1.15;
+	--void-font-weight-black: 900;
+
+	--void-line-height-tight: 0.9;
+	--void-line-height-snug: 1.1;
 	--void-line-height-base: 1.6;
 	--void-line-height-loose: 1.8;
-	--void-letter-spacing-tight: -0.02em;
+
+	--void-letter-spacing-tight: -0.04em;
 	--void-letter-spacing-normal: 0;
 	--void-letter-spacing-wide: 0.05em;
 	--void-letter-spacing-ultra: 0.12em;
@@ -62,20 +82,22 @@ Tags: custom-logo, custom-menu, editor-style, featured-images, threaded-comments
 	--void-space-xl: clamp(2rem, 1.5rem + 2.5vw, 3.5rem);
 	--void-space-2xl: clamp(3rem, 2rem + 5vw, 5.5rem);
 	--void-space-3xl: clamp(4rem, 2.5rem + 7.5vw, 8rem);
+	--void-space-4xl: clamp(6rem, 3.5rem + 12.5vw, 14rem);
 
 	/* --- Grid --- */
 	--void-grid-columns: 12;
 	--void-grid-gutter: var(--void-space-md);
-	--void-grid-max-width: 1200px;
+	--void-grid-max-width: 1400px;
 	--void-grid-margin: var(--void-space-lg);
 
 	/* --- Borders & Radius --- */
 	--void-border-width-sm: 1px;
 	--void-border-width-md: 2px;
 	--void-border-width-lg: 3px;
-	--void-radius-sm: 2px;
-	--void-radius-md: 4px;
-	--void-radius-lg: 8px;
+	--void-border-width-brutal: 4px;
+	--void-radius-sm: 0px;
+	--void-radius-md: 0px;
+	--void-radius-lg: 0px;
 	--void-radius-full: 9999px;
 
 	/* --- Transitions --- */
@@ -84,10 +106,10 @@ Tags: custom-logo, custom-menu, editor-style, featured-images, threaded-comments
 	--void-transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
 
 	/* --- Shadows --- */
-	--void-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-	--void-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
-	--void-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-	--void-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+	--void-shadow-sm: 2px 2px 0 var(--void-color-primary);
+	--void-shadow-md: 4px 4px 0 var(--void-color-primary);
+	--void-shadow-lg: 6px 6px 0 var(--void-color-primary);
+	--void-shadow-xl: 8px 8px 0 var(--void-color-primary);
 
 	/* --- Z-Index Scale --- */
 	--void-z-base: 1;
@@ -149,7 +171,7 @@ a:focus {
 }
 
 /* ==========================================================================
-   3. Typography
+   3. Typography — Massive Editorial Headings
    ========================================================================== */
 
 h1,
@@ -158,18 +180,19 @@ h3,
 h4,
 h5,
 h6 {
-	font-weight: var(--void-font-weight-bold);
+	font-weight: var(--void-font-weight-black);
 	line-height: var(--void-line-height-tight);
 	letter-spacing: var(--void-letter-spacing-tight);
 	color: var(--void-color-primary);
+	text-transform: uppercase;
 }
 
-h1 { font-size: var(--void-font-size-xxl); }
-h2 { font-size: var(--void-font-size-xl); }
-h3 { font-size: var(--void-font-size-lg); }
-h4 { font-size: var(--void-font-size-md); }
-h5 { font-size: var(--void-font-size-base); }
-h6 { font-size: var(--void-font-size-sm); }
+h1 { font-size: var(--void-font-size-h1); margin-bottom: var(--void-space-lg); }
+h2 { font-size: var(--void-font-size-h2); margin-bottom: var(--void-space-md); }
+h3 { font-size: var(--void-font-size-h3); margin-bottom: var(--void-space-md); }
+h4 { font-size: var(--void-font-size-h4); margin-bottom: var(--void-space-sm); }
+h5 { font-size: var(--void-font-size-h5); margin-bottom: var(--void-space-sm); }
+h6 { font-size: var(--void-font-size-h6); margin-bottom: var(--void-space-xs); }
 
 p {
 	margin-bottom: var(--void-space-md);
@@ -181,7 +204,7 @@ small {
 }
 
 /* ==========================================================================
-   4. Layout — Grid System
+   4. Layout — 12-Column Asymmetric Grid
    ========================================================================== */
 
 .site-container {
@@ -198,6 +221,58 @@ small {
 	padding-block: var(--void-space-xl);
 }
 
+/* 12-column grid utility */
+.grid-12 {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	gap: var(--void-grid-gutter);
+}
+
+/* Column span utilities */
+.col-span-1  { grid-column: span 1; }
+.col-span-2  { grid-column: span 2; }
+.col-span-3  { grid-column: span 3; }
+.col-span-4  { grid-column: span 4; }
+.col-span-5  { grid-column: span 5; }
+.col-span-6  { grid-column: span 6; }
+.col-span-7  { grid-column: span 7; }
+.col-span-8  { grid-column: span 8; }
+.col-span-9  { grid-column: span 9; }
+.col-span-10 { grid-column: span 10; }
+.col-span-11 { grid-column: span 11; }
+.col-span-12 { grid-column: span 12; }
+
+/* Column start utilities (for asymmetric positioning) */
+.col-start-1  { grid-column-start: 1; }
+.col-start-2  { grid-column-start: 2; }
+.col-start-3  { grid-column-start: 3; }
+.col-start-4  { grid-column-start: 4; }
+.col-start-5  { grid-column-start: 5; }
+.col-start-6  { grid-column-start: 6; }
+.col-start-7  { grid-column-start: 7; }
+.col-start-8  { grid-column-start: 8; }
+.col-start-9  { grid-column-start: 9; }
+.col-start-10 { grid-column-start: 10; }
+.col-start-11 { grid-column-start: 11; }
+.col-start-12 { grid-column-start: 12; }
+
+/* Responsive: collapse to stacked on mobile */
+@media (max-width: 768px) {
+	.grid-12 {
+		grid-template-columns: 1fr;
+	}
+
+	[class^="col-span-"],
+	[class*=" col-span-"] {
+		grid-column: span 1;
+	}
+
+	[class^="col-start-"],
+	[class*=" col-start-"] {
+		grid-column-start: 1;
+	}
+}
+
 /* ==========================================================================
    5. Header
    ========================================================================== */
@@ -209,7 +284,7 @@ small {
 	background-color: var(--void-color-primary);
 	color: var(--void-color-text-inverse);
 	padding-block: var(--void-space-sm);
-	border-bottom: var(--void-border-width-sm) solid var(--void-color-border);
+	border-bottom: var(--void-border-width-brutal) solid var(--void-color-accent);
 }
 
 .site-header .site-container {
@@ -220,14 +295,19 @@ small {
 }
 
 .site-branding {
-	font-size: var(--void-font-size-lg);
-	font-weight: var(--void-font-weight-bold);
-	letter-spacing: var(--void-letter-spacing-wide);
+	font-size: var(--void-font-size-h5);
+	font-weight: var(--void-font-weight-black);
+	letter-spacing: var(--void-letter-spacing-ultra);
 	text-transform: uppercase;
 }
 
 .site-branding a {
-	color: inherit;
+	color: var(--void-color-text-inverse);
+}
+
+.site-branding a:hover,
+.site-branding a:focus {
+	color: var(--void-color-accent);
 }
 
 /* Primary Navigation */
@@ -240,8 +320,8 @@ small {
 .primary-navigation a {
 	color: var(--void-color-text-inverse);
 	font-size: var(--void-font-size-sm);
-	font-weight: var(--void-font-weight-medium);
-	letter-spacing: var(--void-letter-spacing-wide);
+	font-weight: var(--void-font-weight-bold);
+	letter-spacing: var(--void-letter-spacing-ultra);
 	text-transform: uppercase;
 	padding-block: var(--void-space-2xs);
 	position: relative;
@@ -253,7 +333,7 @@ small {
 	bottom: 0;
 	left: 0;
 	width: 0;
-	height: var(--void-border-width-sm);
+	height: var(--void-border-width-md);
 	background-color: var(--void-color-accent);
 	transition: width var(--void-transition-base);
 }
@@ -272,6 +352,7 @@ small {
 	color: var(--void-color-text-inverse);
 	padding-block: var(--void-space-xl);
 	margin-top: auto;
+	border-top: var(--void-border-width-brutal) solid var(--void-color-accent);
 }
 
 .site-footer .site-container {
@@ -288,7 +369,43 @@ small {
 }
 
 /* ==========================================================================
-   7. Content — Articles & Posts
+   7. Hero Section — Full Brutalist Impact
+   ========================================================================== */
+
+.hero {
+	background-color: var(--void-color-primary);
+	color: var(--void-color-text-inverse);
+	padding-block: var(--void-space-4xl) var(--void-space-3xl);
+	position: relative;
+	overflow: hidden;
+}
+
+.hero__title {
+	font-size: var(--void-font-size-hero);
+	font-weight: var(--void-font-weight-black);
+	line-height: var(--void-line-height-tight);
+	letter-spacing: -0.06em;
+	text-transform: uppercase;
+	color: var(--void-color-accent);
+}
+
+.hero__tagline {
+	font-size: var(--void-font-size-h4);
+	font-weight: var(--void-font-weight-regular);
+	line-height: var(--void-line-height-snug);
+	letter-spacing: var(--void-letter-spacing-normal);
+	text-transform: none;
+	color: var(--void-color-text-inverse);
+	opacity: 0.85;
+	max-width: 45ch;
+}
+
+.hero__cta {
+	margin-top: var(--void-space-xl);
+}
+
+/* ==========================================================================
+   8. Content — Articles & Posts
    ========================================================================== */
 
 .post-archive {
@@ -299,8 +416,7 @@ small {
 
 .post-card {
 	background-color: var(--void-color-surface);
-	border: var(--void-border-width-sm) solid var(--void-color-border);
-	border-radius: var(--void-radius-md);
+	border: var(--void-border-width-brutal) solid var(--void-color-primary);
 	overflow: hidden;
 	transition: box-shadow var(--void-transition-base),
 	            transform var(--void-transition-base);
@@ -308,7 +424,7 @@ small {
 
 .post-card:hover {
 	box-shadow: var(--void-shadow-lg);
-	transform: translateY(-2px);
+	transform: translate(-3px, -3px);
 }
 
 .post-card__thumbnail {
@@ -341,6 +457,94 @@ small {
 	color: var(--void-color-text-muted);
 	letter-spacing: var(--void-letter-spacing-wide);
 	text-transform: uppercase;
+	font-weight: var(--void-font-weight-bold);
+}
+
+/* Roast Cards — Brutalist Variant */
+.roast-card {
+	background-color: var(--void-color-surface);
+	border: var(--void-border-width-brutal) solid var(--void-color-primary);
+	overflow: hidden;
+	transition: box-shadow var(--void-transition-base),
+	            transform var(--void-transition-base);
+}
+
+.roast-card:hover {
+	box-shadow: var(--void-shadow-xl);
+	transform: translate(-4px, -4px);
+}
+
+.roast-card__thumbnail {
+	width: 100%;
+	aspect-ratio: 4 / 3;
+	object-fit: cover;
+	border-bottom: var(--void-border-width-brutal) solid var(--void-color-primary);
+}
+
+.roast-card__content {
+	padding: var(--void-space-md);
+}
+
+.roast-card__title {
+	font-size: var(--void-font-size-h5);
+	font-weight: var(--void-font-weight-black);
+	text-transform: uppercase;
+	letter-spacing: var(--void-letter-spacing-wide);
+	margin-bottom: var(--void-space-xs);
+}
+
+.roast-card__title a {
+	color: var(--void-color-primary);
+}
+
+.roast-card__title a:hover,
+.roast-card__title a:focus {
+	color: var(--void-color-accent);
+	background-color: var(--void-color-primary);
+}
+
+.roast-card__excerpt {
+	font-size: var(--void-font-size-sm);
+	color: var(--void-color-text-muted);
+	margin-bottom: var(--void-space-sm);
+	line-height: var(--void-line-height-base);
+}
+
+.roast-card__meta {
+	font-size: var(--void-font-size-xs);
+	color: var(--void-color-text-muted);
+	letter-spacing: var(--void-letter-spacing-ultra);
+	text-transform: uppercase;
+	font-weight: var(--void-font-weight-bold);
+}
+
+/* Roasts Section */
+.roasts-section {
+	padding-block: var(--void-space-3xl);
+	background-color: var(--void-color-surface);
+}
+
+.roasts-section__title {
+	font-size: var(--void-font-size-h2);
+	margin-bottom: var(--void-space-2xl);
+}
+
+.roasts-section__grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: var(--void-space-lg);
+}
+
+@media (max-width: 992px) {
+	.roasts-section__grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 600px) {
+	.roasts-section__grid {
+		grid-template-columns: 1fr;
+	}
 }
 
 /* Single Post */
@@ -356,7 +560,7 @@ small {
 }
 
 /* ==========================================================================
-   8. Buttons
+   9. Buttons — Brutalist Style
    ========================================================================== */
 
 .btn {
@@ -364,48 +568,70 @@ small {
 	align-items: center;
 	justify-content: center;
 	gap: var(--void-space-2xs);
-	padding: var(--void-space-xs) var(--void-space-md);
+	padding: var(--void-space-sm) var(--void-space-lg);
 	font-family: inherit;
 	font-size: var(--void-font-size-sm);
-	font-weight: var(--void-font-weight-medium);
-	letter-spacing: var(--void-letter-spacing-wide);
+	font-weight: var(--void-font-weight-black);
+	letter-spacing: var(--void-letter-spacing-ultra);
 	text-transform: uppercase;
 	text-decoration: none;
-	border: var(--void-border-width-md) solid transparent;
-	border-radius: var(--void-radius-sm);
+	border: var(--void-border-width-brutal) solid var(--void-color-primary);
 	cursor: pointer;
 	transition: background-color var(--void-transition-fast),
 	            color var(--void-transition-fast),
-	            border-color var(--void-transition-fast);
+	            box-shadow var(--void-transition-fast),
+	            transform var(--void-transition-fast);
+}
+
+.btn:hover {
+	transform: translate(-2px, -2px);
+	box-shadow: var(--void-shadow-md);
+}
+
+.btn:active {
+	transform: translate(0, 0);
+	box-shadow: none;
 }
 
 .btn--primary {
 	background-color: var(--void-color-accent);
-	color: var(--void-color-text-inverse);
-	border-color: var(--void-color-accent);
+	color: var(--void-color-primary);
+	border-color: var(--void-color-primary);
 }
 
 .btn--primary:hover,
 .btn--primary:focus {
 	background-color: var(--void-color-accent-hover);
-	border-color: var(--void-color-accent-hover);
-	color: var(--void-color-text-inverse);
+	color: var(--void-color-primary);
 }
 
 .btn--outline {
 	background-color: transparent;
-	color: var(--void-color-accent);
-	border-color: var(--void-color-accent);
+	color: var(--void-color-primary);
+	border-color: var(--void-color-primary);
 }
 
 .btn--outline:hover,
 .btn--outline:focus {
+	background-color: var(--void-color-primary);
+	color: var(--void-color-accent);
+}
+
+.btn--inverse {
 	background-color: var(--void-color-accent);
-	color: var(--void-color-text-inverse);
+	color: var(--void-color-primary);
+	border-color: var(--void-color-accent);
+}
+
+.btn--inverse:hover,
+.btn--inverse:focus {
+	background-color: var(--void-color-text-inverse);
+	color: var(--void-color-primary);
+	border-color: var(--void-color-text-inverse);
 }
 
 /* ==========================================================================
-   9. Utility Classes
+   10. Utility Classes
    ========================================================================== */
 
 .screen-reader-text {
@@ -423,7 +649,6 @@ small {
 
 .screen-reader-text:focus {
 	background-color: var(--void-color-surface);
-	border-radius: var(--void-radius-sm);
 	box-shadow: var(--void-shadow-lg);
 	clip: auto !important;
 	clip-path: none;
@@ -458,8 +683,13 @@ small {
 	margin-bottom: var(--void-space-md);
 }
 
+.text-accent { color: var(--void-color-accent); }
+.text-inverse { color: var(--void-color-text-inverse); }
+.bg-primary { background-color: var(--void-color-primary); }
+.bg-surface { background-color: var(--void-color-surface); }
+
 /* ==========================================================================
-   10. WordPress Core Alignment Support
+   11. WordPress Core Alignment Support
    ========================================================================== */
 
 .entry-content > * {
