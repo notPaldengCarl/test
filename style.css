@@ -584,6 +584,98 @@ small {
 	margin-bottom: var(--void-space-md);
 }
 
+/* Single Post — Detail View */
+.single-hero {
+	width: 100%;
+	max-height: 60vh;
+	overflow: hidden;
+}
+
+.single-hero__image {
+	width: 100%;
+	height: 60vh;
+	object-fit: cover;
+}
+
+.single-post__header {
+	margin-bottom: var(--void-space-2xl);
+}
+
+.single-post__title {
+	font-size: var(--void-font-size-h1);
+	font-weight: var(--void-font-weight-black);
+	text-transform: uppercase;
+	letter-spacing: var(--void-letter-spacing-tight);
+	line-height: var(--void-line-height-tight);
+	margin-bottom: var(--void-space-md);
+}
+
+.single-post__meta {
+	font-size: var(--void-font-size-sm);
+	color: var(--void-color-text-muted);
+	letter-spacing: var(--void-letter-spacing-ultra);
+	text-transform: uppercase;
+	font-weight: var(--void-font-weight-bold);
+}
+
+.single-post__footer {
+	margin-top: var(--void-space-3xl);
+	padding-top: var(--void-space-xl);
+	border-top: var(--void-border-width-brutal) solid var(--void-color-primary);
+}
+
+.post-navigation {
+	display: flex;
+	justify-content: space-between;
+	gap: var(--void-space-lg);
+}
+
+.post-navigation .nav-links {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.post-nav__label {
+	display: block;
+	font-size: var(--void-font-size-xs);
+	color: var(--void-color-text-muted);
+	letter-spacing: var(--void-letter-spacing-ultra);
+	text-transform: uppercase;
+	margin-bottom: var(--void-space-2xs);
+}
+
+.post-nav__title {
+	font-size: var(--void-font-size-md);
+	font-weight: var(--void-font-weight-black);
+	text-transform: uppercase;
+}
+
+/* Static Page — Minimalist Layout */
+.page-header {
+	margin-bottom: var(--void-space-3xl);
+	padding-bottom: var(--void-space-xl);
+	border-bottom: var(--void-border-width-brutal) solid var(--void-color-primary);
+}
+
+.page-title {
+	font-size: var(--void-font-size-h1);
+	font-weight: var(--void-font-weight-black);
+	text-transform: uppercase;
+	letter-spacing: var(--void-letter-spacing-tight);
+	line-height: var(--void-line-height-tight);
+}
+
+.page-content {
+	max-width: 72ch;
+}
+
+.page-content p {
+	font-size: var(--void-font-size-base);
+	line-height: var(--void-line-height-loose);
+	margin-bottom: var(--void-space-md);
+}
+
 /* ==========================================================================
    9. Buttons — Brutalist Style
    ========================================================================== */
