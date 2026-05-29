@@ -1,131 +1,96 @@
 <?php
 /**
- * The front page template.
- *
- * A fully hardcoded, premium brutalist layout.
- * No database dependency — guaranteed visual output.
+ * Front page template — Swiss-minimalist editorial layout.
  *
  * @package VØID_ROASTERS
- * @since   2.0.0
+ * @since   3.0.0
  */
 
 get_header();
 ?>
 
-<div class="site-wrapper">
+<!-- Hero -->
+<section class="hero" aria-label="<?php esc_attr_e( 'Welcome', 'void-roasters' ); ?>">
+	<div class="container">
+		<span class="section-label"><?php esc_html_e( 'VØID ROASTERS', 'void-roasters' ); ?></span>
+		<h1 class="hero__title"><?php esc_html_e( 'Empowering through craft coffee.', 'void-roasters' ); ?></h1>
+		<div class="hero__cta">
+			<?php
+			$about_page = get_page_by_title( 'About' );
+			$cta_url    = $about_page ? get_permalink( $about_page->ID ) : home_url( '/' );
+			?>
+			<a href="<?php echo esc_url( $cta_url ); ?>" class="btn btn--primary">
+				<?php esc_html_e( 'Learn More', 'void-roasters' ); ?>
+			</a>
+		</div>
+	</div>
+</section>
 
-	<?php
-	/**
-	 * Hero Section — 2-column asymmetric grid.
-	 * Left: massive typographic headline + CTA.
-	 * Right: image placeholder for balance.
-	 */
-	?>
-	<section class="hero" aria-label="<?php esc_attr_e( 'Welcome', 'void-roasters' ); ?>">
-		<div class="hero-grid">
-			<div class="hero-text">
-				<h1 class="hero__title">
-					<?php echo esc_html( get_bloginfo( 'name' ) ); ?>
-				</h1>
-				<p class="hero__tagline">
-					<?php echo esc_html( get_bloginfo( 'description' ) ); ?>
-				</p>
-				<div class="hero__cta">
-					<?php
-					$about_page = get_page_by_title( 'About' );
-					$cta_url    = $about_page ? get_permalink( $about_page->ID ) : home_url( '/' );
-					?>
-					<a href="<?php echo esc_url( $cta_url ); ?>" class="btn btn--inverse">
-						<?php esc_html_e( 'Our Story', 'void-roasters' ); ?>
-					</a>
-				</div>
-			</div><!-- .hero-text -->
-			<div class="hero-image-placeholder" aria-hidden="true">
-				<span class="hero-image-placeholder__label">VØID</span>
-			</div><!-- .hero-image-placeholder -->
-		</div><!-- .hero-grid -->
-	</section><!-- .hero -->
+<hr class="section-divider">
 
-	<?php
-	/**
-	 * Curated Origins — Hardcoded product grid.
-	 * 3 product cards with image, name, price, and CTA.
-	 */
-	?>
-	<section class="curated-origins" aria-label="<?php esc_attr_e( 'Curated Origins', 'void-roasters' ); ?>">
-		<header class="section-header">
-			<h2 class="section-title"><?php esc_html_e( 'Curated Origins', 'void-roasters' ); ?></h2>
-		</header>
+<!-- Split Features -->
+<section class="section--alt" aria-label="<?php esc_attr_e( 'Features', 'void-roasters' ); ?>">
+	<div class="container">
+		<div class="features-grid">
+			<div class="feature-block">
+				<span class="section-label"><?php esc_html_e( '01 Wholesale', 'void-roasters' ); ?></span>
+				<h3 class="feature-block__title"><?php esc_html_e( 'Wholesale for SMEs', 'void-roasters' ); ?></h3>
+				<p class="feature-block__text"><?php esc_html_e( 'Partner with us to bring specialty coffee to your cafe, restaurant, or office. Custom roast profiles, flexible minimums, and dedicated support.', 'void-roasters' ); ?></p>
+			</div>
+			<div class="feature-block">
+				<span class="section-label"><?php esc_html_e( '02 Custom', 'void-roasters' ); ?></span>
+				<h3 class="feature-block__title"><?php esc_html_e( 'Custom Roasting', 'void-roasters' ); ?></h3>
+				<p class="feature-block__text"><?php esc_html_e( 'Work directly with our head roaster to develop a signature blend or single-origin profile tailored to your brand and taste preferences.', 'void-roasters' ); ?></p>
+			</div>
+		</div>
+	</div>
+</section>
 
-		<div class="product-grid">
+<hr class="section-divider">
 
-			<article class="product-card">
-				<div class="card-img" aria-hidden="true">
-					<span class="card-img__label">001</span>
-				</div>
-				<div class="card-body">
-					<h3 class="card-name"><?php esc_html_e( 'Eclipse Blend', 'void-roasters' ); ?></h3>
-					<p class="card-description"><?php esc_html_e( 'Bitter chocolate, charred oak, and molasses. Dark roast from Sumatra.', 'void-roasters' ); ?></p>
-					<div class="card-footer">
-						<span class="card-price">$18.00</span>
-						<button type="button" class="btn btn--primary btn--sm"><?php esc_html_e( 'Add to Cart', 'void-roasters' ); ?></button>
-					</div>
-				</div>
-			</article>
+<!-- Services List -->
+<section aria-label="<?php esc_attr_e( 'Services', 'void-roasters' ); ?>">
+	<div class="container">
+		<span class="section-label"><?php esc_html_e( '03 Services', 'void-roasters' ); ?></span>
+		<h2><?php esc_html_e( 'Three core services.', 'void-roasters' ); ?></h2>
+		<ul class="border-list">
+			<li>
+				<span class="border-list__title"><?php esc_html_e( 'Sourcing', 'void-roasters' ); ?></span>
+				<span class="border-list__desc"><?php esc_html_e( 'Direct relationships with farms in Ethiopia, Colombia, Kenya, Sumatra, and Brazil. Every lot is cupped, scored, and selected for its unique terroir.', 'void-roasters' ); ?></span>
+			</li>
+			<li>
+				<span class="border-list__title"><?php esc_html_e( 'Roasting', 'void-roasters' ); ?></span>
+				<span class="border-list__desc"><?php esc_html_e( 'Micro-batch roasting to precise profiles developed in-house. We roast to highlight origin character, not to mask it.', 'void-roasters' ); ?></span>
+			</li>
+			<li>
+				<span class="border-list__title"><?php esc_html_e( 'Training', 'void-roasters' ); ?></span>
+				<span class="border-list__desc"><?php esc_html_e( 'Barista training, brewing workshops, and equipment consultation for wholesale partners and home enthusiasts alike.', 'void-roasters' ); ?></span>
+			</li>
+		</ul>
+	</div>
+</section>
 
-			<article class="product-card">
-				<div class="card-img" aria-hidden="true">
-					<span class="card-img__label">002</span>
-				</div>
-				<div class="card-body">
-					<h3 class="card-name"><?php esc_html_e( 'Mizu Matcha', 'void-roasters' ); ?></h3>
-					<p class="card-description"><?php esc_html_e( 'Ceremonial grade from Uji, Kyoto. Umami-rich, vivid jade, sweet grass.', 'void-roasters' ); ?></p>
-					<div class="card-footer">
-						<span class="card-price">$24.00</span>
-						<button type="button" class="btn btn--primary btn--sm"><?php esc_html_e( 'Add to Cart', 'void-roasters' ); ?></button>
-					</div>
-				</div>
-			</article>
+<hr class="section-divider">
 
-			<article class="product-card">
-				<div class="card-img" aria-hidden="true">
-					<span class="card-img__label">003</span>
-				</div>
-				<div class="card-body">
-					<h3 class="card-name"><?php esc_html_e( 'Highland', 'void-roasters' ); ?></h3>
-					<p class="card-description"><?php esc_html_e( 'Citrus acidity, jasmine florals, honeyed finish. Natural process Ethiopian.', 'void-roasters' ); ?></p>
-					<div class="card-footer">
-						<span class="card-price">$21.00</span>
-						<button type="button" class="btn btn--primary btn--sm"><?php esc_html_e( 'Add to Cart', 'void-roasters' ); ?></button>
-					</div>
-				</div>
-			</article>
+<!-- Pre-Footer CTA -->
+<section class="section--dark" aria-label="<?php esc_attr_e( 'Contact', 'void-roasters' ); ?>">
+	<div class="container">
+		<div class="features-grid">
+			<div>
+				<h2 class="cta-banner__title"><?php esc_html_e( "Let's build your next system.", 'void-roasters' ); ?></h2>
+				<p class="cta-banner__text"><?php esc_html_e( 'Whether you need a wholesale partner, a custom blend, or a complete coffee program, we are ready.', 'void-roasters' ); ?></p>
+			</div>
+			<div style="display:flex;align-items:center;justify-content:flex-end;">
+				<?php
+				$contact_page = get_page_by_title( 'Contact' );
+				$contact_url  = $contact_page ? get_permalink( $contact_page->ID ) : home_url( '/contact/' );
+				?>
+				<a href="<?php echo esc_url( $contact_url ); ?>" class="btn btn--primary">
+					<?php esc_html_e( 'Get in Touch', 'void-roasters' ); ?>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
 
-		</div><!-- .product-grid -->
-	</section><!-- .curated-origins -->
-
-	<?php
-	/**
-	 * CTA Banner — Visit the roastery.
-	 */
-	?>
-	<section class="cta-banner" aria-label="<?php esc_attr_e( 'Get in Touch', 'void-roasters' ); ?>">
-		<h2 class="cta-banner__title">
-			<?php esc_html_e( 'Visit the Roastery', 'void-roasters' ); ?>
-		</h2>
-		<p class="cta-banner__text">
-			<?php esc_html_e( 'Small-batch roasts, ceremonial matcha, and brutalist vibes. Open by appointment.', 'void-roasters' ); ?>
-		</p>
-		<?php
-		$contact_page = get_page_by_title( 'Contact' );
-		$cta_contact  = $contact_page ? get_permalink( $contact_page->ID ) : home_url( '/contact/' );
-		?>
-		<a href="<?php echo esc_url( $cta_contact ); ?>" class="btn btn--inverse">
-			<?php esc_html_e( 'Book a Visit', 'void-roasters' ); ?>
-		</a>
-	</section><!-- .cta-banner -->
-
-</div><!-- .site-wrapper -->
-
-<?php
-get_footer();
+<?php get_footer(); ?>
