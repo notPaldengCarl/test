@@ -72,6 +72,48 @@ get_header();
 
 <hr class="section-divider">
 
+<!-- Products Preview -->
+<section aria-label="<?php esc_attr_e( 'Our Roasts', 'void-roasters' ); ?>">
+	<div class="container">
+		<span class="section-label"><?php esc_html_e( '04 OUR ROASTS', 'void-roasters' ); ?></span>
+		<h2 style="margin-bottom:var(--space-2xl);"><?php esc_html_e( 'Shop Coffee', 'void-roasters' ); ?></h2>
+		<div class="product-grid">
+			<article class="product-card">
+				<div class="product-card__img"><span class="product-card__img-label">E</span></div>
+				<div class="product-card__body">
+					<h3 class="product-card__name"><?php esc_html_e( 'Eclipse Blend', 'void-roasters' ); ?></h3>
+					<p class="product-card__price">$18.00</p>
+				</div>
+				<div class="product-card__footer">
+					<button type="button" class="btn btn--primary btn--sm" style="width:100%;"><?php esc_html_e( 'Add to Cart', 'void-roasters' ); ?></button>
+				</div>
+			</article>
+			<article class="product-card">
+				<div class="product-card__img"><span class="product-card__img-label">M</span></div>
+				<div class="product-card__body">
+					<h3 class="product-card__name"><?php esc_html_e( 'Mizu Matcha', 'void-roasters' ); ?></h3>
+					<p class="product-card__price">$24.00</p>
+				</div>
+				<div class="product-card__footer">
+					<button type="button" class="btn btn--primary btn--sm" style="width:100%;"><?php esc_html_e( 'Add to Cart', 'void-roasters' ); ?></button>
+				</div>
+			</article>
+			<article class="product-card">
+				<div class="product-card__img"><span class="product-card__img-label">H</span></div>
+				<div class="product-card__body">
+					<h3 class="product-card__name"><?php esc_html_e( 'Highland', 'void-roasters' ); ?></h3>
+					<p class="product-card__price">$21.00</p>
+				</div>
+				<div class="product-card__footer">
+					<button type="button" class="btn btn--primary btn--sm" style="width:100%;"><?php esc_html_e( 'Add to Cart', 'void-roasters' ); ?></button>
+				</div>
+			</article>
+		</div>
+	</div>
+</section>
+
+<hr class="section-divider">
+
 <!-- Pre-Footer CTA -->
 <section class="section--dark" aria-label="<?php esc_attr_e( 'Contact', 'void-roasters' ); ?>">
 	<div class="container">

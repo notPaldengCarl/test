@@ -118,6 +118,19 @@ function void_provision_business() {
 		return;
 	}
 
+	// --- Delete Default WordPress Content ---
+	// Delete all existing posts (including Hello World).
+	$existing_posts = get_posts( array( 'post_type' => 'post', 'post_status' => 'any', 'numberposts' => -1 ) );
+	foreach ( $existing_posts as $old_post ) {
+		wp_delete_post( $old_post->ID, true );
+	}
+
+	// Delete all existing pages (including Sample Page).
+	$existing_pages = get_posts( array( 'post_type' => 'page', 'post_status' => 'any', 'numberposts' => -1 ) );
+	foreach ( $existing_pages as $old_page ) {
+		wp_delete_post( $old_page->ID, true );
+	}
+
 	// --- Update Site Identity ---
 	update_option( 'blogname', 'VØID ROASTERS' );
 	update_option( 'blogdescription', 'Empowering through craft coffee.' );
