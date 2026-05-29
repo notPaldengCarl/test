@@ -120,7 +120,7 @@ function void_provision_business() {
 
 	// --- Update Site Identity ---
 	update_option( 'blogname', 'VØID ROASTERS' );
-	update_option( 'blogdescription', 'Brutalist Coffee & Matcha Bar' );
+	update_option( 'blogdescription', 'Empowering through craft coffee.' );
 
 	// --- Create Pages ---
 	$home_id = wp_insert_post(
@@ -146,7 +146,16 @@ function void_provision_business() {
 			'post_title'   => 'Contact',
 			'post_type'    => 'page',
 			'post_status'  => 'publish',
-			'post_content' => '<h2>Get In Touch</h2><p>For wholesale inquiries, collaboration proposals, or just to say hello:</p><p><strong>Email:</strong> hello@voidroasters.com</p><p><strong>Location:</strong> Roastery visits by appointment only.</p><p><strong>Social:</strong> @voidroasters</p><h3>Wholesale</h3><p>We partner with cafes, restaurants, and offices who share our commitment to quality. Minimum order quantities and custom roast profiles available upon request.</p>',
+			'post_content' => '',
+		)
+	);
+
+	$products_id = wp_insert_post(
+		array(
+			'post_title'   => 'Products',
+			'post_type'    => 'page',
+			'post_status'  => 'publish',
+			'post_content' => '',
 		)
 	);
 
@@ -203,6 +212,17 @@ function void_provision_business() {
 			$menu_id,
 			0,
 			array(
+				'menu-item-title'     => 'Products',
+				'menu-item-object-id' => $products_id,
+				'menu-item-object'    => 'page',
+				'menu-item-type'      => 'post_type',
+				'menu-item-status'    => 'publish',
+			)
+		);
+		wp_update_nav_menu_item(
+			$menu_id,
+			0,
+			array(
 				'menu-item-title'     => 'About',
 				'menu-item-object-id' => $about_id,
 				'menu-item-object'    => 'page',
@@ -238,6 +258,9 @@ function void_provision_business() {
 	}
 	if ( $contact_id && ! is_wp_error( $contact_id ) ) {
 		update_post_meta( $contact_id, '_wp_page_template', 'page-contact.php' );
+	}
+	if ( $products_id && ! is_wp_error( $products_id ) ) {
+		update_post_meta( $products_id, '_wp_page_template', 'page-products.php' );
 	}
 
 	// Mark as provisioned so it only runs once.
