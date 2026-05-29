@@ -431,16 +431,30 @@ small {
 }
 
 /* ==========================================================================
-   7. Hero Section — Full Brutalist Impact
+   7. Site Wrapper
+   ========================================================================== */
+
+.site-wrapper {
+	max-width: 1440px;
+	margin: 0 auto;
+}
+
+.site-wrapper > section {
+	padding-block: 10vh;
+	padding-inline: 2rem;
+}
+
+.site-wrapper > .hero {
+	padding-block: 10vh;
+}
+
+/* ==========================================================================
+   7b. Hero Section — 2-Column Grid
    ========================================================================== */
 
 .hero {
 	background-color: var(--void-color-primary);
 	color: var(--void-color-text-inverse);
-	min-height: 80vh;
-	display: flex;
-	align-items: center;
-	padding-block: var(--void-space-4xl);
 	position: relative;
 	overflow: hidden;
 }
@@ -453,6 +467,25 @@ small {
 	width: 100%;
 	height: var(--void-border-width-brutal);
 	background-color: var(--void-color-accent);
+}
+
+.hero-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: var(--void-space-3xl);
+	align-items: center;
+}
+
+@media (max-width: 768px) {
+	.hero-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.hero-text {
+	display: flex;
+	flex-direction: column;
+	gap: var(--void-space-md);
 }
 
 .hero__title {
@@ -476,7 +509,67 @@ small {
 }
 
 .hero__cta {
-	margin-top: var(--void-space-xl);
+	margin-top: var(--void-space-md);
+}
+
+.hero-image-placeholder {
+	background-color: var(--void-color-secondary);
+	aspect-ratio: 4 / 5;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid var(--void-color-accent);
+	position: relative;
+	overflow: hidden;
+}
+
+/* Noise/grain effect */
+.hero-image-placeholder::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+	background-size: 128px 128px;
+	pointer-events: none;
+}
+
+.hero-image-placeholder__label {
+	font-family: var(--void-font-family-mono);
+	font-size: var(--void-font-size-hero);
+	font-weight: var(--void-font-weight-black);
+	color: var(--void-color-tertiary);
+	letter-spacing: var(--void-letter-spacing-ultra);
+	text-transform: uppercase;
+	position: relative;
+	z-index: 1;
+}
+
+/* ==========================================================================
+   7c. Curated Origins Section
+   ========================================================================== */
+
+.curated-origins {
+	background-color: var(--void-color-surface);
+}
+
+.section-header {
+	margin-bottom: var(--void-space-2xl);
+}
+
+.section-title {
+	font-size: var(--void-font-size-h2);
+	position: relative;
+	display: inline-block;
+}
+
+.section-title::after {
+	content: '';
+	position: absolute;
+	bottom: -0.15em;
+	left: 0;
+	width: 100%;
+	height: var(--void-border-width-brutal);
+	background-color: var(--void-color-accent);
 }
 
 /* ==========================================================================
@@ -676,23 +769,85 @@ small {
 }
 
 .product-card {
-	background-color: var(--void-color-surface);
-	border: var(--void-border-width-brutal) solid var(--void-color-primary);
+	background-color: transparent;
+	border: 1px solid #333333;
+	padding: 1.5rem;
 	overflow: hidden;
 	transition: box-shadow var(--void-transition-base),
-	            transform var(--void-transition-base);
+	            transform var(--void-transition-base),
+	            border-color var(--void-transition-base);
 }
 
 .product-card:hover {
 	box-shadow: var(--void-shadow-xl);
 	transform: translate(-4px, -4px);
+	border-color: var(--void-color-accent);
 }
 
-.product-card:hover .card-title {
+.product-card:hover .card-name {
 	color: var(--void-color-accent);
-	background-color: var(--void-color-primary);
 }
 
+.card-img {
+	background-color: #ffffff;
+	aspect-ratio: 4 / 3;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: var(--void-space-md);
+	position: relative;
+	border: 1px solid var(--void-color-border);
+}
+
+.card-img__label {
+	font-family: var(--void-font-family-mono);
+	font-size: var(--void-font-size-xxl);
+	font-weight: var(--void-font-weight-black);
+	color: var(--void-color-border);
+	letter-spacing: var(--void-letter-spacing-ultra);
+}
+
+.card-body {
+	padding: 0;
+}
+
+.card-name {
+	font-size: var(--void-font-size-h4);
+	font-weight: var(--void-font-weight-black);
+	text-transform: uppercase;
+	letter-spacing: var(--void-letter-spacing-tight);
+	line-height: 1;
+	margin-bottom: var(--void-space-xs);
+	transition: color var(--void-transition-fast);
+}
+
+.card-description {
+	font-size: var(--void-font-size-sm);
+	color: var(--void-color-text-muted);
+	line-height: 1.6;
+	margin-bottom: var(--void-space-md);
+}
+
+.card-footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--void-space-sm);
+}
+
+.card-price {
+	font-family: var(--void-font-family-mono);
+	font-size: var(--void-font-size-md);
+	font-weight: var(--void-font-weight-black);
+	letter-spacing: var(--void-letter-spacing-wide);
+}
+
+.btn--sm {
+	padding: var(--void-space-xs) var(--void-space-md);
+	font-size: var(--void-font-size-xs);
+}
+
+/* Legacy card styles (for WP_Query populated cards) */
 .card-image {
 	background-color: var(--void-color-secondary);
 	aspect-ratio: 4 / 3;
@@ -709,10 +864,6 @@ small {
 	font-weight: var(--void-font-weight-black);
 	color: var(--void-color-tertiary);
 	letter-spacing: var(--void-letter-spacing-ultra);
-}
-
-.card-body {
-	padding: var(--void-space-md);
 }
 
 .card-meta {
