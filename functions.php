@@ -88,5 +88,14 @@ function void_enqueue_assets() {
 		array(),
 		VOID_VERSION
 	);
+
+	// Enqueue scroll-reveal motion engine (progressive enhancement).
+	wp_enqueue_script(
+		'void-motion',
+		VOID_URI . '/js/motion.js',
+		array(),
+		VOID_VERSION,
+		true
+	);
 }
 add_action( 'wp_enqueue_scripts', 'void_enqueue_assets' );

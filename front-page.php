@@ -21,7 +21,7 @@ get_header();
 <section class="hero" aria-label="<?php esc_attr_e( 'Welcome', 'void-roasters' ); ?>">
 	<div class="site-container grid-12">
 
-		<div class="hero__content col-span-8 col-start-1">
+		<div class="hero__content col-span-8 col-start-1 reveal">
 			<h1 class="hero__title">
 				<?php echo esc_html( get_bloginfo( 'name' ) ); ?>
 			</h1>
@@ -47,7 +47,7 @@ get_header();
 <section class="roasts-section" aria-label="<?php esc_attr_e( 'Curated Single-Origin Roasts', 'void-roasters' ); ?>">
 	<div class="site-container">
 
-		<h2 class="roasts-section__title">
+		<h2 class="roasts-section__title reveal">
 			<?php esc_html_e( 'Curated Origins', 'void-roasters' ); ?>
 		</h2>
 
@@ -64,7 +64,7 @@ get_header();
 
 		if ( $void_roasts_query->have_posts() ) :
 			?>
-			<div class="roasts-section__grid">
+		<div class="roasts-section__grid reveal-stagger">
 				<?php
 				while ( $void_roasts_query->have_posts() ) :
 					$void_roasts_query->the_post();

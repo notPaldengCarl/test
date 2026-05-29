@@ -9,7 +9,7 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'roast-card' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'roast-card reveal' ); ?>>
 
 	<?php if ( has_post_thumbnail() ) : ?>
 		<div class="roast-card__media">

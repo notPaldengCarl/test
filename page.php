@@ -20,13 +20,13 @@ get_header();
 		?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class( 'page' ); ?>>
 
-			<header class="page-header">
+			<header class="page-header reveal">
 				<h1 class="page-title">
 					<?php echo esc_html( get_the_title() ); ?>
 				</h1>
 			</header><!-- .page-header -->
 
-			<div class="page-content">
+			<div class="page-content reveal">
 				<?php the_content(); ?>
 			</div><!-- .page-content -->
 

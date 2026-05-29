@@ -27,7 +27,7 @@ while ( have_posts() ) :
 
 		<article id="post-<?php the_ID(); ?>" <?php post_class( 'single-post' ); ?>>
 
-			<header class="single-post__header">
+			<header class="single-post__header reveal">
 				<h1 class="single-post__title">
 					<?php echo esc_html( get_the_title() ); ?>
 				</h1>
@@ -38,7 +38,7 @@ while ( have_posts() ) :
 				</div>
 			</header><!-- .single-post__header -->
 
-			<div class="single-post__content">
+			<div class="single-post__content reveal">
 				<?php
 				// Using the_content for full WP filtering and shortcodes.
 				// WordPress core applies wp_kses_post filtering via kses at database level.
@@ -46,7 +46,7 @@ while ( have_posts() ) :
 				?>
 			</div><!-- .single-post__content -->
 
-			<footer class="single-post__footer">
+			<footer class="single-post__footer reveal">
 				<?php the_post_navigation(
 					array(
 						'prev_text' => '<span class="post-nav__label">' . esc_html__( 'Previous', 'void-roasters' ) . '</span> <span class="post-nav__title">%title</span>',
