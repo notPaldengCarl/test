@@ -39,6 +39,11 @@
 				return;
 			}
 
+			// Mark all reveal elements as JS-powered (enables CSS .reveal.js-reveal rules).
+			reveals.forEach( function ( el ) {
+				el.classList.add( 'js-reveal' );
+			} );
+
 			var observer = new IntersectionObserver(
 				function ( entries ) {
 					entries.forEach( function ( entry ) {

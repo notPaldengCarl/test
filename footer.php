@@ -13,9 +13,14 @@
 <footer id="colophon" class="site-footer" role="contentinfo">
 	<div class="site-container">
 
+		<div class="site-footer__brand">
+			<span class="logo-void">VØID</span><span class="logo-roasters">ROASTERS</span>
+			<p class="site-footer__tagline"><?php esc_html_e( 'Brutalist Coffee & Matcha Bar', 'void-roasters' ); ?></p>
+		</div>
+
 		<div class="site-footer__copyright">
 			&copy; <?php echo esc_html( gmdate( 'Y' ) ); ?>
-			<?php bloginfo( 'name' ); ?>.
+			<?php echo esc_html( get_bloginfo( 'name' ) ); ?>.
 			<?php esc_html_e( 'All rights reserved.', 'void-roasters' ); ?>
 		</div><!-- .site-footer__copyright -->
 

@@ -388,6 +388,28 @@ small {
 	gap: var(--void-space-md);
 }
 
+.site-footer__brand {
+	display: flex;
+	flex-direction: column;
+	gap: var(--void-space-2xs);
+}
+
+.site-footer__brand .logo-void {
+	font-size: var(--void-font-size-h4);
+}
+
+.site-footer__brand .logo-roasters {
+	font-size: var(--void-font-size-h4);
+}
+
+.site-footer__tagline {
+	font-size: var(--void-font-size-xs);
+	color: var(--void-color-text-muted);
+	letter-spacing: var(--void-letter-spacing-ultra);
+	text-transform: uppercase;
+	margin: 0;
+}
+
 .site-footer__copyright {
 	font-size: var(--void-font-size-sm);
 	letter-spacing: var(--void-letter-spacing-wide);
@@ -400,9 +422,22 @@ small {
 .hero {
 	background-color: var(--void-color-primary);
 	color: var(--void-color-text-inverse);
-	padding-block: var(--void-space-4xl) var(--void-space-3xl);
+	min-height: 80vh;
+	display: flex;
+	align-items: center;
+	padding-block: var(--void-space-4xl);
 	position: relative;
 	overflow: hidden;
+}
+
+.hero::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: var(--void-border-width-brutal);
+	background-color: var(--void-color-accent);
 }
 
 .hero__title {
@@ -545,13 +580,25 @@ small {
 
 /* Roasts Section */
 .roasts-section {
-	padding-block: var(--void-space-3xl);
+	padding-block: var(--void-space-3xl) var(--void-space-4xl);
 	background-color: var(--void-color-surface);
 }
 
 .roasts-section__title {
 	font-size: var(--void-font-size-h2);
 	margin-bottom: var(--void-space-2xl);
+	position: relative;
+	display: inline-block;
+}
+
+.roasts-section__title::after {
+	content: '';
+	position: absolute;
+	bottom: -0.15em;
+	left: 0;
+	width: 100%;
+	height: var(--void-border-width-brutal);
+	background-color: var(--void-color-accent);
 }
 
 .roasts-section__grid {
@@ -748,6 +795,45 @@ small {
 }
 
 /* ==========================================================================
+   9b. CTA Banner
+   ========================================================================== */
+
+.cta-banner {
+	background-color: var(--void-color-primary);
+	color: var(--void-color-text-inverse);
+	padding-block: var(--void-space-3xl);
+	text-align: center;
+	border-top: var(--void-border-width-brutal) solid var(--void-color-accent);
+	border-bottom: var(--void-border-width-brutal) solid var(--void-color-accent);
+}
+
+.cta-banner__title {
+	font-size: var(--void-font-size-h2);
+	font-weight: var(--void-font-weight-black);
+	text-transform: uppercase;
+	letter-spacing: var(--void-letter-spacing-tight);
+	color: var(--void-color-accent);
+	margin-bottom: var(--void-space-md);
+}
+
+.cta-banner__text {
+	font-size: var(--void-font-size-md);
+	color: var(--void-color-text-inverse);
+	opacity: 0.8;
+	max-width: 50ch;
+	margin-inline: auto;
+	margin-bottom: var(--void-space-xl);
+}
+
+.section-divider {
+	width: 100%;
+	height: var(--void-border-width-brutal);
+	background-color: var(--void-color-accent);
+	border: none;
+	margin: 0;
+}
+
+/* ==========================================================================
    10. Utility Classes
    ========================================================================== */
 
@@ -810,41 +896,47 @@ small {
    ========================================================================== */
 
 /* Native CSS scroll-reveal using animation-timeline: view() (2026 spec) */
-.reveal {
-	opacity: 0;
-	transform: translateY(2rem);
-	animation: void-reveal linear both;
-	animation-timeline: view();
-	animation-range: entry 0% entry 100%;
-}
-
-@keyframes void-reveal {
-	from {
+@supports (animation-timeline: view()) {
+	.reveal {
 		opacity: 0;
 		transform: translateY(2rem);
+		animation: void-reveal linear both;
+		animation-timeline: view();
+		animation-range: entry 0% entry 100%;
 	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
+
+	@keyframes void-reveal {
+		from {
+			opacity: 0;
+			transform: translateY(2rem);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
 	}
+
+	.reveal-stagger .reveal:nth-child(2) { animation-delay: 0.1s; }
+	.reveal-stagger .reveal:nth-child(3) { animation-delay: 0.2s; }
+	.reveal-stagger .reveal:nth-child(4) { animation-delay: 0.3s; }
 }
 
-/* Progressive fallback for browsers without animation-timeline support */
-.reveal.in-view {
-	opacity: 1;
-	transform: translateY(0);
+/* JS-powered reveal (IntersectionObserver fallback) */
+.reveal.js-reveal {
+	opacity: 0;
+	transform: translateY(2rem);
 	transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
 	            transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Staggered reveal for grid children */
-.reveal-stagger .reveal:nth-child(2) { animation-delay: 0.1s; }
-.reveal-stagger .reveal:nth-child(3) { animation-delay: 0.2s; }
-.reveal-stagger .reveal:nth-child(4) { animation-delay: 0.3s; }
+.reveal.js-reveal.in-view {
+	opacity: 1;
+	transform: translateY(0);
+}
 
-.reveal-stagger .reveal.in-view:nth-child(2) { transition-delay: 0.1s; }
-.reveal-stagger .reveal.in-view:nth-child(3) { transition-delay: 0.2s; }
-.reveal-stagger .reveal.in-view:nth-child(4) { transition-delay: 0.3s; }
+.reveal-stagger .reveal.js-reveal:nth-child(2) { transition-delay: 0.1s; }
+.reveal-stagger .reveal.js-reveal:nth-child(3) { transition-delay: 0.2s; }
+.reveal-stagger .reveal.js-reveal:nth-child(4) { transition-delay: 0.3s; }
 
 /* ==========================================================================
    12. WordPress Core Alignment Support
