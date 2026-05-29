@@ -55,7 +55,7 @@ get_header();
 
 		if ( $void_roasts_query->have_posts() ) :
 			?>
-			<div class="roasts-section__grid">
+			<div class="product-grid">
 				<?php
 				while ( $void_roasts_query->have_posts() ) :
 					$void_roasts_query->the_post();
@@ -67,9 +67,37 @@ get_header();
 			wp_reset_postdata();
 		else :
 			?>
-			<div class="roasts-section__empty">
-				<h3><?php esc_html_e( 'ROASTS IN PRODUCTION', 'void-roasters' ); ?></h3>
-				<p><?php esc_html_e( 'Our roasters are perfecting the next batch. Run seed-data.sh to populate.', 'void-roasters' ); ?></p>
+			<div class="product-grid">
+				<article class="product-card">
+					<div class="card-image" aria-hidden="true">
+						<span class="card-image__label">001</span>
+					</div>
+					<div class="card-body">
+						<div class="card-meta">SINGLE ESTATE &sol;&sol; SUMATRA</div>
+						<h3 class="card-title">Eclipse Dark Roast</h3>
+						<p class="card-desc">Bitter chocolate, charred oak, and molasses. Roasted deep for those who take it black.</p>
+					</div>
+				</article>
+				<article class="product-card">
+					<div class="card-image" aria-hidden="true">
+						<span class="card-image__label">002</span>
+					</div>
+					<div class="card-body">
+						<div class="card-meta">FIRST HARVEST &sol;&sol; UJI, KYOTO</div>
+						<h3 class="card-title">Ceremonial Mizu Matcha</h3>
+						<p class="card-desc">Umami-rich body, vivid jade color, sweet grass and marine mineral. Stone-ground to order.</p>
+					</div>
+				</article>
+				<article class="product-card">
+					<div class="card-image" aria-hidden="true">
+						<span class="card-image__label">003</span>
+					</div>
+					<div class="card-body">
+						<div class="card-meta">NATURAL PROCESS &sol;&sol; YIRGACHEFFE</div>
+						<h3 class="card-title">Highland Pour-Over</h3>
+						<p class="card-desc">Citrus acidity, jasmine florals, and a honeyed finish. Brewed low and slow for clarity.</p>
+					</div>
+				</article>
 			</div>
 		<?php endif; ?>
 	</div>

@@ -231,6 +231,14 @@ function void_provision_business() {
 		);
 	}
 
+	// Assign custom page templates.
+	if ( $about_id && ! is_wp_error( $about_id ) ) {
+		update_post_meta( $about_id, '_wp_page_template', 'page-about.php' );
+	}
+	if ( $contact_id && ! is_wp_error( $contact_id ) ) {
+		update_post_meta( $contact_id, '_wp_page_template', 'page-contact.php' );
+	}
+
 	// Mark as provisioned so it only runs once.
 	update_option( 'void_business_provisioned', true );
 }
