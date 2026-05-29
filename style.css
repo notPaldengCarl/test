@@ -1,0 +1,478 @@
+/*
+Theme Name: VØID ROASTERS
+Theme URI: https://voidroasters.com
+Author: VØID ROASTERS Team
+Author URI: https://voidroasters.com
+Description: A bespoke WordPress theme for VØID ROASTERS, built with Swiss International Typographic Style, strict grid alignment, and a custom CSS property engine. Zero frameworks, zero bloat.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.5
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: void-roasters
+Tags: custom-logo, custom-menu, editor-style, featured-images, threaded-comments, translation-ready
+*/
+
+/* ==========================================================================
+   1. Custom Property Engine — Bespoke Design Tokens
+   ========================================================================== */
+
+:root {
+	/* --- Color Palette --- */
+	--void-color-primary: #0a0a0a;
+	--void-color-secondary: #1a1a1a;
+	--void-color-accent: #e63946;
+	--void-color-accent-hover: #c1121f;
+	--void-color-surface: #ffffff;
+	--void-color-surface-alt: #f8f9fa;
+	--void-color-border: #dee2e6;
+	--void-color-text: #212529;
+	--void-color-text-muted: #6c757d;
+	--void-color-text-inverse: #f8f9fa;
+
+	/* --- Typography --- */
+	--void-font-family-primary: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	--void-font-family-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+	--void-font-size-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.8rem);
+	--void-font-size-sm: clamp(0.8rem, 0.75rem + 0.25vw, 0.9rem);
+	--void-font-size-base: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+	--void-font-size-md: clamp(1.1rem, 1rem + 0.5vw, 1.25rem);
+	--void-font-size-lg: clamp(1.35rem, 1.15rem + 1vw, 1.75rem);
+	--void-font-size-xl: clamp(1.75rem, 1.4rem + 1.75vw, 2.5rem);
+	--void-font-size-xxl: clamp(2.25rem, 1.6rem + 3.25vw, 3.75rem);
+	--void-font-weight-regular: 400;
+	--void-font-weight-medium: 500;
+	--void-font-weight-bold: 700;
+	--void-line-height-tight: 1.15;
+	--void-line-height-base: 1.6;
+	--void-line-height-loose: 1.8;
+	--void-letter-spacing-tight: -0.02em;
+	--void-letter-spacing-normal: 0;
+	--void-letter-spacing-wide: 0.05em;
+	--void-letter-spacing-ultra: 0.12em;
+
+	/* --- Spacing Scale (Fluid) --- */
+	--void-space-3xs: clamp(0.125rem, 0.1rem + 0.125vw, 0.25rem);
+	--void-space-2xs: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
+	--void-space-xs: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
+	--void-space-sm: clamp(0.75rem, 0.6rem + 0.75vw, 1rem);
+	--void-space-md: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+	--void-space-lg: clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem);
+	--void-space-xl: clamp(2rem, 1.5rem + 2.5vw, 3.5rem);
+	--void-space-2xl: clamp(3rem, 2rem + 5vw, 5.5rem);
+	--void-space-3xl: clamp(4rem, 2.5rem + 7.5vw, 8rem);
+
+	/* --- Grid --- */
+	--void-grid-columns: 12;
+	--void-grid-gutter: var(--void-space-md);
+	--void-grid-max-width: 1200px;
+	--void-grid-margin: var(--void-space-lg);
+
+	/* --- Borders & Radius --- */
+	--void-border-width-sm: 1px;
+	--void-border-width-md: 2px;
+	--void-border-width-lg: 3px;
+	--void-radius-sm: 2px;
+	--void-radius-md: 4px;
+	--void-radius-lg: 8px;
+	--void-radius-full: 9999px;
+
+	/* --- Transitions --- */
+	--void-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+	--void-transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+	--void-transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+	/* --- Shadows --- */
+	--void-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+	--void-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+	--void-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+	--void-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+
+	/* --- Z-Index Scale --- */
+	--void-z-base: 1;
+	--void-z-dropdown: 100;
+	--void-z-sticky: 200;
+	--void-z-overlay: 300;
+	--void-z-modal: 400;
+	--void-z-toast: 500;
+}
+
+/* ==========================================================================
+   2. Reset & Base
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 100%;
+	-webkit-text-size-adjust: 100%;
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: var(--void-font-family-primary);
+	font-size: var(--void-font-size-base);
+	font-weight: var(--void-font-weight-regular);
+	line-height: var(--void-line-height-base);
+	color: var(--void-color-text);
+	background-color: var(--void-color-surface);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+a {
+	color: var(--void-color-accent);
+	text-decoration: none;
+	transition: color var(--void-transition-fast);
+}
+
+a:hover,
+a:focus {
+	color: var(--void-color-accent-hover);
+}
+
+/* ==========================================================================
+   3. Typography
+   ========================================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: var(--void-font-weight-bold);
+	line-height: var(--void-line-height-tight);
+	letter-spacing: var(--void-letter-spacing-tight);
+	color: var(--void-color-primary);
+}
+
+h1 { font-size: var(--void-font-size-xxl); }
+h2 { font-size: var(--void-font-size-xl); }
+h3 { font-size: var(--void-font-size-lg); }
+h4 { font-size: var(--void-font-size-md); }
+h5 { font-size: var(--void-font-size-base); }
+h6 { font-size: var(--void-font-size-sm); }
+
+p {
+	margin-bottom: var(--void-space-md);
+}
+
+small {
+	font-size: var(--void-font-size-sm);
+	color: var(--void-color-text-muted);
+}
+
+/* ==========================================================================
+   4. Layout — Grid System
+   ========================================================================== */
+
+.site-container {
+	width: 100%;
+	max-width: var(--void-grid-max-width);
+	margin-inline: auto;
+	padding-inline: var(--void-grid-margin);
+}
+
+.site-main {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--void-space-lg);
+	padding-block: var(--void-space-xl);
+}
+
+/* ==========================================================================
+   5. Header
+   ========================================================================== */
+
+.site-header {
+	position: sticky;
+	top: 0;
+	z-index: var(--void-z-sticky);
+	background-color: var(--void-color-primary);
+	color: var(--void-color-text-inverse);
+	padding-block: var(--void-space-sm);
+	border-bottom: var(--void-border-width-sm) solid var(--void-color-border);
+}
+
+.site-header .site-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--void-space-md);
+}
+
+.site-branding {
+	font-size: var(--void-font-size-lg);
+	font-weight: var(--void-font-weight-bold);
+	letter-spacing: var(--void-letter-spacing-wide);
+	text-transform: uppercase;
+}
+
+.site-branding a {
+	color: inherit;
+}
+
+/* Primary Navigation */
+.primary-navigation ul {
+	display: flex;
+	list-style: none;
+	gap: var(--void-space-md);
+}
+
+.primary-navigation a {
+	color: var(--void-color-text-inverse);
+	font-size: var(--void-font-size-sm);
+	font-weight: var(--void-font-weight-medium);
+	letter-spacing: var(--void-letter-spacing-wide);
+	text-transform: uppercase;
+	padding-block: var(--void-space-2xs);
+	position: relative;
+}
+
+.primary-navigation a::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 0;
+	height: var(--void-border-width-sm);
+	background-color: var(--void-color-accent);
+	transition: width var(--void-transition-base);
+}
+
+.primary-navigation a:hover::after,
+.primary-navigation a:focus::after {
+	width: 100%;
+}
+
+/* ==========================================================================
+   6. Footer
+   ========================================================================== */
+
+.site-footer {
+	background-color: var(--void-color-primary);
+	color: var(--void-color-text-inverse);
+	padding-block: var(--void-space-xl);
+	margin-top: auto;
+}
+
+.site-footer .site-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	gap: var(--void-space-md);
+}
+
+.site-footer__copyright {
+	font-size: var(--void-font-size-sm);
+	letter-spacing: var(--void-letter-spacing-wide);
+}
+
+/* ==========================================================================
+   7. Content — Articles & Posts
+   ========================================================================== */
+
+.post-archive {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+	gap: var(--void-space-lg);
+}
+
+.post-card {
+	background-color: var(--void-color-surface);
+	border: var(--void-border-width-sm) solid var(--void-color-border);
+	border-radius: var(--void-radius-md);
+	overflow: hidden;
+	transition: box-shadow var(--void-transition-base),
+	            transform var(--void-transition-base);
+}
+
+.post-card:hover {
+	box-shadow: var(--void-shadow-lg);
+	transform: translateY(-2px);
+}
+
+.post-card__thumbnail {
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	object-fit: cover;
+}
+
+.post-card__content {
+	padding: var(--void-space-md);
+}
+
+.post-card__title {
+	font-size: var(--void-font-size-md);
+	margin-bottom: var(--void-space-xs);
+}
+
+.post-card__title a {
+	color: var(--void-color-primary);
+}
+
+.post-card__excerpt {
+	font-size: var(--void-font-size-sm);
+	color: var(--void-color-text-muted);
+	margin-bottom: var(--void-space-sm);
+}
+
+.post-card__meta {
+	font-size: var(--void-font-size-xs);
+	color: var(--void-color-text-muted);
+	letter-spacing: var(--void-letter-spacing-wide);
+	text-transform: uppercase;
+}
+
+/* Single Post */
+.single-post__content {
+	max-width: 72ch;
+	margin-inline: auto;
+}
+
+.single-post__content p {
+	font-size: var(--void-font-size-base);
+	line-height: var(--void-line-height-loose);
+	margin-bottom: var(--void-space-md);
+}
+
+/* ==========================================================================
+   8. Buttons
+   ========================================================================== */
+
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--void-space-2xs);
+	padding: var(--void-space-xs) var(--void-space-md);
+	font-family: inherit;
+	font-size: var(--void-font-size-sm);
+	font-weight: var(--void-font-weight-medium);
+	letter-spacing: var(--void-letter-spacing-wide);
+	text-transform: uppercase;
+	text-decoration: none;
+	border: var(--void-border-width-md) solid transparent;
+	border-radius: var(--void-radius-sm);
+	cursor: pointer;
+	transition: background-color var(--void-transition-fast),
+	            color var(--void-transition-fast),
+	            border-color var(--void-transition-fast);
+}
+
+.btn--primary {
+	background-color: var(--void-color-accent);
+	color: var(--void-color-text-inverse);
+	border-color: var(--void-color-accent);
+}
+
+.btn--primary:hover,
+.btn--primary:focus {
+	background-color: var(--void-color-accent-hover);
+	border-color: var(--void-color-accent-hover);
+	color: var(--void-color-text-inverse);
+}
+
+.btn--outline {
+	background-color: transparent;
+	color: var(--void-color-accent);
+	border-color: var(--void-color-accent);
+}
+
+.btn--outline:hover,
+.btn--outline:focus {
+	background-color: var(--void-color-accent);
+	color: var(--void-color-text-inverse);
+}
+
+/* ==========================================================================
+   9. Utility Classes
+   ========================================================================== */
+
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+	background-color: var(--void-color-surface);
+	border-radius: var(--void-radius-sm);
+	box-shadow: var(--void-shadow-lg);
+	clip: auto !important;
+	clip-path: none;
+	color: var(--void-color-text);
+	display: block;
+	font-size: var(--void-font-size-sm);
+	height: auto;
+	left: var(--void-space-xs);
+	line-height: normal;
+	padding: var(--void-space-md) var(--void-space-lg);
+	text-decoration: none;
+	top: var(--void-space-xs);
+	width: auto;
+	z-index: var(--void-z-toast);
+}
+
+.alignleft {
+	float: left;
+	margin-right: var(--void-space-md);
+	margin-bottom: var(--void-space-md);
+}
+
+.alignright {
+	float: right;
+	margin-left: var(--void-space-md);
+	margin-bottom: var(--void-space-md);
+}
+
+.aligncenter {
+	display: block;
+	margin-inline: auto;
+	margin-bottom: var(--void-space-md);
+}
+
+/* ==========================================================================
+   10. WordPress Core Alignment Support
+   ========================================================================== */
+
+.entry-content > * {
+	max-width: var(--void-grid-max-width);
+	margin-inline: auto;
+}
+
+.entry-content > .alignwide {
+	max-width: calc(var(--void-grid-max-width) + var(--void-space-2xl));
+}
+
+.entry-content > .alignfull {
+	max-width: none;
+	width: 100vw;
+	margin-inline: calc(50% - 50vw);
+}
