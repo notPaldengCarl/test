@@ -69,7 +69,7 @@ get_header();
 				<article class="product-card">
 					<div class="product-card__img"><span class="product-card__img-label">E</span></div>
 					<div class="product-card__body">
-						<h3 class="product-card__name"><?php esc_html_e( 'Eclipse Blend', 'void-roasters' ); ?></h3>
+						<h3 class="product-card__name"><?php esc_html_e( 'Eclipse Dark Roast', 'void-roasters' ); ?></h3>
 						<p class="product-card__price">$18.00</p>
 					</div>
 					<div class="product-card__footer">
@@ -79,7 +79,7 @@ get_header();
 				<article class="product-card">
 					<div class="product-card__img"><span class="product-card__img-label">M</span></div>
 					<div class="product-card__body">
-						<h3 class="product-card__name"><?php esc_html_e( 'Mizu Matcha', 'void-roasters' ); ?></h3>
+						<h3 class="product-card__name"><?php esc_html_e( 'Ceremonial Mizu Matcha', 'void-roasters' ); ?></h3>
 						<p class="product-card__price">$24.00</p>
 					</div>
 					<div class="product-card__footer">
@@ -89,7 +89,7 @@ get_header();
 				<article class="product-card">
 					<div class="product-card__img"><span class="product-card__img-label">H</span></div>
 					<div class="product-card__body">
-						<h3 class="product-card__name"><?php esc_html_e( 'Highland', 'void-roasters' ); ?></h3>
+						<h3 class="product-card__name"><?php esc_html_e( 'Highland Pour-Over', 'void-roasters' ); ?></h3>
 						<p class="product-card__price">$21.00</p>
 					</div>
 					<div class="product-card__footer">

@@ -34,16 +34,21 @@
 		</div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="primary-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Primary Navigation', 'void-roasters' ); ?>">
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'primary',
-					'menu_id'        => 'primary-menu',
-					'container'      => false,
-					'fallback_cb'    => 'void_fallback_nav',
-				)
-			);
-			?>
+			<ul>
+				<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'void-roasters' ); ?></a></li>
+				<?php $about_page = get_page_by_title( 'About' ); ?>
+				<?php if ( $about_page ) : ?>
+					<li><a href="<?php echo esc_url( get_permalink( $about_page->ID ) ); ?>"><?php esc_html_e( 'About', 'void-roasters' ); ?></a></li>
+				<?php endif; ?>
+				<?php $products_page = get_page_by_title( 'Products' ); ?>
+				<?php if ( $products_page ) : ?>
+					<li><a href="<?php echo esc_url( get_permalink( $products_page->ID ) ); ?>"><?php esc_html_e( 'Products', 'void-roasters' ); ?></a></li>
+				<?php endif; ?>
+				<?php $contact_page = get_page_by_title( 'Contact' ); ?>
+				<?php if ( $contact_page ) : ?>
+					<li><a href="<?php echo esc_url( get_permalink( $contact_page->ID ) ); ?>"><?php esc_html_e( 'Contact', 'void-roasters' ); ?></a></li>
+				<?php endif; ?>
+			</ul>
 		</nav><!-- .primary-navigation -->
 
 	</div><!-- .container -->

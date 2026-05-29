@@ -111,7 +111,7 @@ html {
 
 body {
 	font-family: var(--font-family);
-	font-size: var(--font-size-base);
+	font-size: 16px;
 	font-weight: var(--font-weight-regular);
 	line-height: var(--line-height-base);
 	color: var(--color-text);
@@ -161,6 +161,7 @@ h5 { font-size: var(--font-size-md); margin-bottom: var(--space-sm); }
 h6 { font-size: var(--font-size-sm); margin-bottom: var(--space-xs); }
 
 p {
+	font-size: 1rem;
 	margin-bottom: var(--space-md);
 	line-height: var(--line-height-base);
 }
@@ -196,9 +197,9 @@ p {
 .border-list li {
 	display: flex;
 	justify-content: space-between;
-	align-items: baseline;
+	align-items: flex-start;
 	gap: var(--space-lg);
-	padding-block: var(--space-md);
+	padding: 2rem 0;
 	border-bottom: 1px solid var(--color-border);
 }
 
@@ -216,8 +217,7 @@ p {
 	font-size: var(--font-size-sm);
 	color: var(--color-text-muted);
 	text-align: right;
-	flex: 1;
-	max-width: 40ch;
+	flex: 0 0 60%;
 }
 
 @media (max-width: 600px) {
@@ -239,7 +239,7 @@ p {
 	background-color: var(--color-white);
 	border: 1px solid var(--color-border);
 	border-radius: 0;
-	padding: var(--space-xl);
+	padding: 1.5rem;
 	transition: border-color var(--transition-fast);
 }
 
@@ -331,14 +331,15 @@ section {
 
 .primary-navigation ul {
 	display: flex;
+	gap: 2rem;
 	list-style: none;
-	gap: var(--space-lg);
+	margin: 0;
 }
 
 .primary-navigation a {
-	color: var(--color-text);
-	font-size: var(--font-size-sm);
-	font-weight: var(--font-weight-medium);
+	color: #000000;
+	font-size: 0.85rem;
+	font-weight: 700;
 	letter-spacing: var(--letter-spacing-wide);
 	text-transform: uppercase;
 	text-decoration: none;
@@ -346,7 +347,7 @@ section {
 }
 
 .primary-navigation a:hover {
-	color: var(--color-accent);
+	color: #00a859;
 }
 
 /* ==========================================================================
@@ -661,7 +662,8 @@ section {
 .footer-grid {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
-	gap: var(--space-lg);
+	gap: 3rem;
+	width: 100%;
 	margin-bottom: var(--space-3xl);
 }
 
@@ -687,8 +689,8 @@ section {
 }
 
 .footer-col__desc {
-	font-size: var(--font-size-sm);
-	color: rgba(255,255,255,0.6);
+	font-size: 1rem;
+	color: #ffffff;
 	line-height: var(--line-height-base);
 }
 
@@ -708,8 +710,8 @@ section {
 }
 
 .footer-menu a {
-	color: rgba(255,255,255,0.7);
-	font-size: var(--font-size-sm);
+	color: #ffffff;
+	font-size: 1rem;
 	text-decoration: none;
 	transition: color var(--transition-fast);
 }
@@ -720,8 +722,8 @@ section {
 
 .footer-address {
 	font-style: normal;
-	font-size: var(--font-size-sm);
-	color: rgba(255,255,255,0.6);
+	font-size: 1rem;
+	color: #ffffff;
 	line-height: var(--line-height-base);
 }
 
