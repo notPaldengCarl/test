@@ -66,7 +66,7 @@ function void_setup() {
 	// Register navigation menus.
 	register_nav_menus(
 		array(
-			'primary' => esc_html__( 'Primary Navigation', 'void-roasters' ),
+			'primary' => esc_html__( 'Primary Menu', 'void-roasters' ),
 			'footer'  => esc_html__( 'Footer Navigation', 'void-roasters' ),
 		)
 	);

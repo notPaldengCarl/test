@@ -147,6 +147,7 @@ body {
 	background-color: var(--void-color-surface);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	padding-top: 60px;
 }
 
 img,
@@ -278,13 +279,15 @@ small {
    ========================================================================== */
 
 .site-header {
-	position: sticky;
+	position: fixed;
 	top: 0;
+	left: 0;
+	right: 0;
 	z-index: var(--void-z-sticky);
 	background-color: var(--void-color-primary);
 	color: var(--void-color-text-inverse);
 	padding-block: var(--void-space-sm);
-	border-bottom: var(--void-border-width-brutal) solid var(--void-color-accent);
+	border-bottom: 1px solid #f9f9f9;
 }
 
 .site-header .site-container {
@@ -303,11 +306,33 @@ small {
 
 .site-branding a {
 	color: var(--void-color-text-inverse);
+	text-decoration: none;
 }
 
 .site-branding a:hover,
 .site-branding a:focus {
 	color: var(--void-color-accent);
+}
+
+/* Typographic Logo */
+.logo-link {
+	display: inline-flex;
+	align-items: baseline;
+	gap: 0;
+	text-decoration: none;
+}
+
+.logo-void {
+	font-weight: var(--void-font-weight-black);
+	color: var(--void-color-text-inverse);
+	letter-spacing: -0.04em;
+}
+
+.logo-roasters {
+	font-weight: var(--void-font-weight-regular);
+	color: var(--void-color-accent);
+	letter-spacing: var(--void-letter-spacing-wide);
+	margin-left: 0.15em;
 }
 
 /* Primary Navigation */
